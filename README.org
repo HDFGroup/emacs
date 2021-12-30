@@ -4,7 +4,7 @@
 Let's use this repository to collect nuggets or [[https://en.wikipedia.org/wiki/Monadology]["monads"]] supporting HDF5 in the
 world's most powerful productivity environment!
 
-* TODO
+* Ideas
 - [[https://www.youtube.com/watch?v=w3krYEeqnyk][Conquering HDF5 tools with Emacs]]
 - [[https://github.com/gheber/literate-hdf5][Literate HDF5]]
 - Show us your [[https://github.com/joaotavora/yasnippet][YASnippets]]!

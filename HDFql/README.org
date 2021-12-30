@@ -40,14 +40,14 @@ HDFqlCLI --help
 HDFqlCLI (Command-Line Interface) version 2.4.0 (using GCC 4.9 64 bit library)
 Copyright (C) 2016-2021
 
-  [1m--help[0m            Show this help and exit.
-  [1m--version[0m         Show the version of HDFqlCLI and exit.
-  [1m--debug[0m           Show debug information when executing HDFql operations.
-  [1m--no-path[0m         Do not show group path currently in use in HDFqlCLI prompt.
-  [1m--no-status[0m       Do not show status after executing HDFql operations.
-  [1m--execute=X[0m       Execute HDFql operation(s) "X" and exit.
-  [1m--execute-file=X[0m  Execute HDFql operation(s) stored in file "X" and exit.
-  [1m--save-file=X[0m     Save executed HDFql operation(s) to file "X".
+  --help            Show this help and exit.
+  --version         Show the version of HDFqlCLI and exit.
+  --debug           Show debug information when executing HDFql operations.
+  --no-path         Do not show group path currently in use in HDFqlCLI prompt.
+  --no-status       Do not show status after executing HDFql operations.
+  --execute=X       Execute HDFql operation(s) "X" and exit.
+  --execute-file=X  Execute HDFql operation(s) stored in file "X" and exit.
+  --save-file=X     Save executed HDFql operation(s) to file "X".
 
 #+end_example
 
@@ -115,7 +115,7 @@ GROUP "/" {
 }
 #+end_example
 
-* TODO
+* Ideas
 
 - Better syntax highlighting
 - Indentation support
