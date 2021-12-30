@@ -63,6 +63,9 @@ Copyright (C) 2016-2021
 
 * Enjoy the show!
 
+#+CAPTION: Screenshot
+[[./HDFql_Emacs_Org.png]]
+
 #+begin_src hdfql :results output raw :exports both
 
 CREATE TRUNCATE AND USE FILE my_file.h5
