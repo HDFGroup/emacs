@@ -8,4 +8,5 @@ world's most powerful productivity environment!
 - [[https://www.youtube.com/watch?v=w3krYEeqnyk][Conquering HDF5 tools with Emacs]]
 - [[https://github.com/gheber/literate-hdf5][Literate HDF5]]
 - Show us your [[https://github.com/joaotavora/yasnippet][YASnippets]]!
+- Talk to [[https://www.hdfgroup.org/solutions/highly-scalable-data-service-hsds/][HSDS]] via [[https://erick.navarro.io/blog/testing-an-api-with-emacs-and-restclient/][=restclient=]]
 - ...
