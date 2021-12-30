@@ -1,0 +1,123 @@
+#+title: HDFql Minor Mode
+#+date: <2021-12-30 Thu>
+
+=hdfql-mode= is a minor mode on top of [[https://www.emacswiki.org/emacs/SqlMode][=sql-mode=]].
+
+* Prerequisites
+You need a copy of HDFql, which can be downloaded from the [[https://www.hdfql.com/][HDFql website]].
+
+The =HDFqlCLI= command line interface, which is part of HDFql, needs to be in
+your =PATH=. =HDFqlCLI= depends on =libHDFql.so=, which needs to be in your
+=LD_LIBRARY_PATH=
+
+These instructions have been tested with HDFql 2.4.0 and Emacs 27.1 on
+Debian 11.2. It is very likely that other version combinations and platforms
+will work. Please report any issues in the [[https://forum.hdfgroup.org/t/hdfql-emacs-org-winning-combo/9241][HDF forum]] or submit a pull request!
+
+#+begin_src emacs-lisp -n :exports both :eval yes
+
+(princ (concat
+        (format "Emacs version: %s\n"
+                (emacs-version))
+        (format "org version: %s\n"
+                (org-version))))
+
+#+end_src
+
+#+RESULTS:
+: Emacs version: GNU Emacs 27.1 (build 1, x86_64-pc-linux-gnu, GTK+ Version 3.24.24, cairo version 1.16.0)
+:  of 2021-03-27, modified by Debian
+: org version: 9.5.1
+
+#+begin_src shell :results output :exports both
+
+HDFqlCLI --help
+
+#+end_src
+
+#+RESULTS:
+#+begin_example
+HDFqlCLI (Command-Line Interface) version 2.4.0 (using GCC 4.9 64 bit library)
+Copyright (C) 2016-2021
+
+  [1m--help[0m            Show this help and exit.
+  [1m--version[0m         Show the version of HDFqlCLI and exit.
+  [1m--debug[0m           Show debug information when executing HDFql operations.
+  [1m--no-path[0m         Do not show group path currently in use in HDFqlCLI prompt.
+  [1m--no-status[0m       Do not show status after executing HDFql operations.
+  [1m--execute=X[0m       Execute HDFql operation(s) "X" and exit.
+  [1m--execute-file=X[0m  Execute HDFql operation(s) stored in file "X" and exit.
+  [1m--save-file=X[0m     Save executed HDFql operation(s) to file "X".
+
+#+end_example
+
+* Installation
+- Add this to your Emacs configuration (=~/.emacs= or =~/.emacs.d/init.el=)
+  #+begin_src elisp
+
+  ;; HDFql support
+  (autoload 'hdfql-mode "hdfql" "HDFql - the easy way to manage HDF5 data" t)
+
+  #+end_src
+- Copy =hdfql.el= to a path in your =load-path= (e.g., =~/.emacs.d/lisp=)
+
+* Enjoy the show!
+
+#+begin_src hdfql :results output raw :exports both
+
+CREATE TRUNCATE AND USE FILE my_file.h5
+
+CREATE DATASET my_group/my_dataset AS double(3) ENABLE zlib LEVEL 0 VALUES(4, 8, 6)
+
+SELECT FROM DATASET my_group/my_dataset
+
+#+end_src
+
+#+RESULTS:
+4.000000
+8.000000
+6.000000
+
+#+begin_src shell :results output :exports both
+
+h5dump -p my_file.h5
+
+#+end_src
+
+#+RESULTS:
+#+begin_example
+HDF5 "my_file.h5" {
+GROUP "/" {
+   GROUP "my_group" {
+      DATASET "my_dataset" {
+         DATATYPE  H5T_IEEE_F64LE
+         DATASPACE  SIMPLE { ( 3 ) / ( 3 ) }
+         STORAGE_LAYOUT {
+            CHUNKED ( 3 )
+            SIZE 35 (0.686:1 COMPRESSION)
+         }
+         FILTERS {
+            COMPRESSION DEFLATE { LEVEL 0 }
+         }
+         FILLVALUE {
+            FILL_TIME H5D_FILL_TIME_IFSET
+            VALUE  H5D_FILL_VALUE_DEFAULT
+         }
+         ALLOCATION_TIME {
+            H5D_ALLOC_TIME_INCR
+         }
+         DATA {
+         (0): 4, 8, 6
+         }
+      }
+   }
+}
+}
+#+end_example
+
+* TODO
+
+- Better syntax highlighting
+- Indentation support
+- Support for sessions (=:session=)
+- Support for =:async=
