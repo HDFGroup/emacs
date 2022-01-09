@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: H5Fcreate
+# key: h5fcrt
+# --
+H5Fcreate(${1:szFileName}, ${2:$$(yas-auto-next (yas-completing-read "Flag (H5F_ACC_TRUNC): " '("H5F_ACC_TRUNC" "H5F_ACC_EXCL") nil t nil nil "H5F_ACC_TRUNC"))}, ${3:H5P_DEFAULT}, ${4:H5P_DEFAULT})$0

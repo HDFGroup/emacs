@@ -1,0 +1,28 @@
+# -*- mode: snippet -*-
+# name: H5main
+# key: h5main
+# --
+
+#include "hdf5.h"
+
+#include <stdlib.h>
+
+int main()
+{
+    int retval = EXIT_SUCCESS;
+    hid_t hfile = H5I_INVALID_HID;
+    char sFileName[] = "${1:yasnippet.h5}";
+
+    if ((hfile = H5Fcreate(sFileName, H5F_ACC_TRUNC, H5P_DEFAULT, H5P_DEFAULT))
+    == H5I_INVALID_HID) {
+       retval = EXIT_FAILURE;
+       goto fail_file;
+    }
+
+    $0
+
+    H5Fclose(hfile);
+
+fail_file:
+    return retval;
+}

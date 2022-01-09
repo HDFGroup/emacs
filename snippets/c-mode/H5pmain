@@ -1,0 +1,54 @@
+# -*- mode: snippet -*-
+# name: H5pmain
+# key: h5pmain
+# --
+
+#include "hdf5.h"
+#include "mpi.h"
+
+#include <stdlib.h>
+
+int main(int argc, char** argv)
+{
+    int retval = EXIT_SUCCESS;
+    MPI_Comm comm = MPI_COMM_WORLD;
+    int size, rank;
+    hid_t hfile = H5I_INVALID_HID, hfapl = H5I_INVALID_HID;
+    char sFileName[] = "${1:yasnippet.h5}";
+
+    if (MPI_Init(&argc, &argv) != MPI_SUCCESS) {
+       retval = EXIT_FAILURE;
+       goto fail_mpi;
+    }
+    if (MPI_Comm_size(comm, &size) != MPI_SUCCESS ||
+        MPI_Comm_rank(comm, &rank) != MPI_SUCCESS) {
+        retval = EXIT_FAILURE;
+        goto fail_file;
+    }
+    if ((hfapl = H5Pcreate(H5P_FILE_ACCESS)) == H5I_INVALID_HID ||
+        H5Pset_fapl_mpio(hfapl, comm, MPI_INFO_NULL) < 0) {
+        retval = EXIT_FAILURE;
+        goto fail_file;
+    }
+    if ((hfile = H5Fcreate(sFileName, H5F_ACC_TRUNC, H5P_DEFAULT, hfapl))
+        == H5I_INVALID_HID) {
+       retval = EXIT_FAILURE;
+       goto fail_file;
+    }
+
+    $0
+
+    H5Fclose(hfile);
+
+fail_file:
+
+    if (hfapl != H5I_INVALID_HID)
+       H5Pclose(hfapl);
+
+    MPI_Barrier(comm);
+
+    MPI_Finalize();
+
+fail_mpi:
+    return retval;
+}

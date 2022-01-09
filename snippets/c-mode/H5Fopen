@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: H5Fopen
+# key: h5fopn
+# --
+H5Fopen(${1:szFileName}, ${2:$$(yas-auto-next (yas-completing-read "Flag (H5F_ACC_RDWR): " '("H5F_ACC_RDWR" "H5F_ACC_RDONLY" "H5F_ACC_RDWR|H5F_ACCC_SWMR_WRITE" "H5F_ACC_RDONLY|H5ACC_SWMR_READ") nil t nil nil "H5F_ACC_RDWR"))}, ${3:H5P_DEFAULT})$0
