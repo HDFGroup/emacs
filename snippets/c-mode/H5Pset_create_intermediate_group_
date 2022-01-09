@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: H5Pset_create_intermediate_group_
+# key: intermed_
+# --
+
+hid_t ${1:hlcpl} = H5Pcreate(H5P_LINK_CREATE);
+H5Pset_create_intermediate_group($1, 1);
+
+$0
+
+H5Pclose(hlcpl);

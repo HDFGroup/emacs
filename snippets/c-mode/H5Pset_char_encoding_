@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: H5Pset_char_encoding_
+# key: charenc_
+# --
+// This could also be an attribute CPL
+hid_t ${1:hlcpl} = H5Pcreate(H5P_LINK_CREATE);
+
+H5Pset_char_encoding($1, ${2:$$(yas-auto-next (yas-completing-read "Encoding (H5T_CSET_UTF8): " '("H5T_CSET_ASCII" "H5T_CSET_UTF8") nil t nil nil "H5T_CSET_UTF8"))})
+
+$0
+
+H5Pclose(hlcpl);

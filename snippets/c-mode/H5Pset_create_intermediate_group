@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: H5Pset_create_intermediate_group
+# key: intermed
+# --
+H5Pset_create_intermediate_group(${1:hlcpl}, ${2:flag})$0

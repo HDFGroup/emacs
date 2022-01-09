@@ -1,0 +1,20 @@
+#+title: HDF5 Snippets
+#+date: <2022-01-09 Sun>
+
+* Background
+
+* Current Snippets
+
+| Key                   | Expansion                           |
+|-----------------------+-------------------------------------|
+| =ascii=               | =H5T_CSET_ASCII=                    |
+| =charenc, charenc_=   | =H5Pset_char_encoding=              |
+| =h5main=              | Simple HDF5 starter                 |
+| =h5main=              | Simple parallel HDF5 starter        |
+| =h5fcrt, h5fcrt_=     | =H5Fcreate=                         |
+| =h5fopn=              | =H5Fopen=                           |
+| =h5gcrt, h5gcrt_=     | =H5Gcreate=                         |
+| =h5pcrt=              | =H5Pcreate=                         |
+| =h5pd=                | =H5P_DEFAULT=                       |
+| =intermed, intermed_= | =H5Pset_create_intermediate_group_= |
+| =utf8=                | =H5T_CSET_UTF8=                     |

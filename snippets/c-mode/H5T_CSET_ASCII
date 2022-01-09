@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: H5T_CSET_ASCII
+# key: ascii
+# --
+H5T_CSET_ASCII$0

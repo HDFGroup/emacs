@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: H5Pset_char_encoding
+# key: charenc
+# --
+H5Pset_char_encoding(${1:hcpl}, ${2:$$(yas-auto-next (yas-completing-read "Encoding (H5T_CSET_UTF8): " '("H5T_CSET_ASCII" "H5T_CSET_UTF8") nil t nil nil "H5T_CSET_UTF8"))})$0

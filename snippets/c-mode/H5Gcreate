@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: H5Gcreate
+# key: h5gcrt
+# --
+H5Gcreate(${1:hloc}, ${2:szname}, ${3:H5P_DEFAULT}, ${4:H5P_DEFAULT}, ${5:H5P_DEFAULT})$0
